@@ -8,13 +8,14 @@ The macOS automation uses `launchd` (the native macOS service manager) to run th
 
 ### Why Automated Monitoring is Important
 
-For Claude Pro and Claude Team subscribers, usage limits reset on a rolling basis. Automated monitoring helps you:
-- **Track your reset timer accurately** - Know exactly when your usage limits will refresh
-- **Optimize your usage patterns** - Plan intensive coding sessions around your reset times
-- **Avoid hitting limits unexpectedly** - Get early awareness of your consumption rate
-- **Make the most of your subscription** - Ensure you're utilizing your full allocation efficiently
+Claude implements a 5-hour rolling rate limit system. Automated monitoring helps you:
+- **Track the 5-hour reset cycle** - Know exactly when your rate limits will refresh
+- **Optimize your usage patterns** - Plan intensive coding sessions around the 5-hour windows
+- **Monitor rate limit recovery** - See in real-time as your available usage regenerates
+- **Avoid hitting limits unexpectedly** - Get early awareness when approaching rate limits
+- **Maximize productivity** - Time your work sessions to align with fresh rate limit periods
 
-By running the monitor automatically every few minutes, you'll always have up-to-date information about your usage status and reset timing, helping you maximize the value of your Claude subscription.
+By running the monitor automatically every few minutes, you'll always have current visibility into where you are in the 5-hour cycle, helping you work more efficiently with Claude's rate limiting system.
 
 ## Prerequisites
 
