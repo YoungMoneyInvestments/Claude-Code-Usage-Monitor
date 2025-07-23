@@ -89,7 +89,7 @@ cat > "$PLIST_DEST" << EOF
     <true/>
     
     <key>StartInterval</key>
-    <integer>300</integer>
+    <integer>18000</integer>
     
     <key>StandardOutPath</key>
     <string>/tmp/claude-usage-monitor.log</string>
@@ -128,7 +128,7 @@ sleep 2
 if launchctl list | grep -q "com.claudecode.usage.monitor"; then
     print_status "Service is running!"
     echo
-    echo "The Claude Code Usage Monitor will now run automatically every 5 minutes."
+    echo "The Claude Code Usage Monitor will now run automatically every 5 hours."
     echo
     echo "Useful commands:"
     echo "  - Check status:  launchctl list | grep claude"

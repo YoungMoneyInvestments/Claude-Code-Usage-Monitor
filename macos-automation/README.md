@@ -15,7 +15,7 @@ Claude implements a 5-hour rolling rate limit system. Automated monitoring helps
 - **Avoid hitting limits unexpectedly** - Get early awareness when approaching rate limits
 - **Maximize productivity** - Time your work sessions to align with fresh rate limit periods
 
-By running the monitor automatically every few minutes, you'll always have current visibility into where you are in the 5-hour cycle, helping you work more efficiently with Claude's rate limiting system.
+By running the monitor automatically every 5 hours, it checks your usage status precisely when the rate limit cycle refreshes, helping you stay aware of your available capacity.
 
 ## Prerequisites
 
@@ -50,7 +50,7 @@ pip install -r requirements.txt
 
 3. Update the following placeholders:
    - Replace `/path/to/Claude-Code-Usage-Monitor/monitor.py` with the actual path to your monitor.py file
-   - Adjust the `StartInterval` value (in seconds) to set how often the monitor runs (default: 300 = 5 minutes)
+   - The `StartInterval` is set to 18000 seconds (5 hours) to match Claude's rate limit cycle
 
 ### 3. Load the LaunchAgent
 
@@ -78,7 +78,7 @@ tail -f /tmp/claude-usage-monitor.error
 - **Label**: Unique identifier for the service (don't change this)
 - **ProgramArguments**: Command to execute (python3 path and script path)
 - **RunAtLoad**: Start automatically when the system boots
-- **StartInterval**: How often to run in seconds (300 = 5 minutes)
+- **StartInterval**: How often to run in seconds (18000 = 5 hours)
 - **StandardOutPath**: Where to save standard output logs
 - **StandardErrorPath**: Where to save error logs
 - **KeepAlive**: Whether to restart if the process dies (set to false for interval-based execution)
@@ -86,10 +86,10 @@ tail -f /tmp/claude-usage-monitor.error
 ### Adjusting Run Frequency
 
 To change how often the monitor runs, modify the `StartInterval` value:
-- 60 = every minute
-- 300 = every 5 minutes (default)
-- 900 = every 15 minutes
 - 3600 = every hour
+- 7200 = every 2 hours
+- 10800 = every 3 hours
+- 18000 = every 5 hours (default - matches Claude's rate limit cycle)
 - 86400 = once per day
 
 ## Managing the Service
@@ -142,9 +142,9 @@ If you prefer using cron instead of launchd:
    crontab -e
    ```
 
-2. Add the following line (runs every 5 minutes):
+2. Add the following line (runs every 5 hours):
    ```
-   */5 * * * * /usr/bin/python3 /path/to/Claude-Code-Usage-Monitor/monitor.py >> /tmp/claude-usage-monitor.log 2>&1
+   0 */5 * * * /usr/bin/python3 /path/to/Claude-Code-Usage-Monitor/monitor.py >> /tmp/claude-usage-monitor.log 2>&1
    ```
 
 Note: macOS may prompt you to grant cron full disk access in System Preferences > Security & Privacy > Privacy > Full Disk Access.
