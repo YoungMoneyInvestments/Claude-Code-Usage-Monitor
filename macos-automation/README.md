@@ -6,6 +6,16 @@ This guide explains how to set up automatic monitoring of Claude Code usage on m
 
 The macOS automation uses `launchd` (the native macOS service manager) to run the Claude Code Usage Monitor at regular intervals. This ensures your usage is tracked automatically without manual intervention.
 
+### Why Automated Monitoring is Important
+
+For Claude Pro and Claude Team subscribers, usage limits reset on a rolling basis. Automated monitoring helps you:
+- **Track your reset timer accurately** - Know exactly when your usage limits will refresh
+- **Optimize your usage patterns** - Plan intensive coding sessions around your reset times
+- **Avoid hitting limits unexpectedly** - Get early awareness of your consumption rate
+- **Make the most of your subscription** - Ensure you're utilizing your full allocation efficiently
+
+By running the monitor automatically every few minutes, you'll always have up-to-date information about your usage status and reset timing, helping you maximize the value of your Claude subscription.
+
 ## Prerequisites
 
 - macOS 10.10 or later
